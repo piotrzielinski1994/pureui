@@ -38,3 +38,19 @@ linting.
 **Decision:** Pin `typescript` to `~5.9.3` (the newest TS the linter supports).
 
 **Why:** Keeps `npm run lint` working. Revisit when typescript-eslint ships TS 7 support.
+
+## ADR-004: Publish to public npm under the `@pziel` org
+
+**Context:** ADR-001 deferred publishing because `@pzielinski` was not an owned scope.
+The npm username scope is `@piotr.zielinski.1994` (ugly), and creating an org named
+`pzielinski` was blocked. A free public npm org `pziel` was created instead.
+
+**Decision:** Rename the package to `@pziel/pureui` and publish it to the **public** npm
+registry (`publishConfig.access = "public"`, `private` removed). This supersedes the
+"deferred" state of ADR-001.
+
+**Why:** Public scoped packages under a free org cost nothing, give a clean import name
+(`@pziel/pureui`), and let the sibling apps depend on a versioned registry package
+instead of a `file:`/git link. GitHub Packages was rejected because it forces the scope
+to the repo owner (`@piotrzielinski1994`) and requires an auth `.npmrc` in every
+consumer.

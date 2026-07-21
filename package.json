@@ -1,10 +1,16 @@
 {
-  "name": "@pzielinski/pureui",
-  "private": true,
+  "name": "@pziel/pureui",
   "version": "0.1.0",
   "type": "module",
   "description": "Shared React component library for the pure* apps (purerequest, purequery, ...). Radix-ui composed components + Tailwind v4 design tokens.",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piotrzielinski1994/pureui.git"
+  },
   "files": [
     "dist"
   ],
@@ -30,7 +36,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "^19.0.0",

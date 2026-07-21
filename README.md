@@ -59,14 +59,14 @@ docs/
    ```jsonc
    // app package.json
    "dependencies": {
-     "@pzielinski/pureui": "file:../pureui"
+     "@pziel/pureui": "file:../pureui"
    }
    ```
 
 2. Import the design tokens once (e.g. in the app entry CSS/TS):
 
    ```ts
-   import "@pzielinski/pureui/styles/theme.css";
+   import "@pziel/pureui/styles/theme.css";
    ```
 
    The consuming app must run Tailwind CSS v4 - the library ships utility class names +
@@ -75,7 +75,7 @@ docs/
 3. Use components:
 
    ```tsx
-   import { Button } from "@pzielinski/pureui";
+   import { Button } from "@pziel/pureui";
 
    <Button variant="outline">Click</Button>;
    <Button asChild><a href="/x">Go</a></Button>;
