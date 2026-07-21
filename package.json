@@ -1,6 +1,6 @@
 {
   "name": "@pziel/pureui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Shared React component library for the pure* apps (purerequest, purequery, ...). Radix-ui composed components + Tailwind v4 design tokens.",
   "license": "MIT",
@@ -11,21 +11,28 @@
     "type": "git",
     "url": "git+https://github.com/piotrzielinski1994/pureui.git"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": ["**/*.css"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./styles/theme.css": "./dist/styles/theme.css"
+    "./styles/theme.css": "./dist/styles/theme.css",
+    "./biome": "./dist/config/biome.base.json",
+    "./tsconfig": "./dist/config/tsconfig.base.json",
+    "./tsconfig-node": "./dist/config/tsconfig.node.base.json",
+    "./vite": {
+      "types": "./dist/config/vite.base.d.ts",
+      "import": "./dist/config/vite.base.js"
+    },
+    "./vitest": {
+      "types": "./dist/config/vitest.base.d.ts",
+      "import": "./dist/config/vitest.base.js"
+    }
   },
   "scripts": {
     "dev": "vite build --watch",
@@ -41,8 +48,18 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-react": "^6.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@tailwindcss/vite": { "optional": true },
+    "@vitejs/plugin-react": { "optional": true },
+    "vite": { "optional": true },
+    "vitest": { "optional": true }
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.3.0",

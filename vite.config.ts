@@ -21,6 +21,26 @@ function copyThemeCss(): Plugin {
   };
 }
 
+const JSON_PRESETS = [
+  "biome.base.json",
+  "tsconfig.base.json",
+  "tsconfig.node.base.json",
+];
+
+function copyJsonPresets(): Plugin {
+  return {
+    name: "pureui:copy-json-presets",
+    apply: "build",
+    closeBundle() {
+      const outDir = resolve(__dirname, "dist/config");
+      mkdirSync(outDir, { recursive: true });
+      JSON_PRESETS.forEach((file) => {
+        copyFileSync(resolve(__dirname, "config", file), resolve(outDir, file));
+      });
+    },
+  };
+}
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -31,20 +51,38 @@ export default defineConfig({
     react(),
     tailwindcss(),
     dts({
-      include: ["src"],
-      exclude: ["src/**/*.stories.tsx", "src/**/*.test.{ts,tsx}", "src/test"],
+      include: ["src", "config"],
+      exclude: [
+        "src/**/*.stories.tsx",
+        "src/**/*.test.{ts,tsx}",
+        "src/test",
+        "config/__tests__",
+      ],
       tsconfigPath: "./tsconfig.json",
     }),
     copyThemeCss(),
+    copyJsonPresets(),
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: {
+        index: resolve(__dirname, "src/index.ts"),
+        "config/vite.base": resolve(__dirname, "config/vite.base.ts"),
+        "config/vitest.base": resolve(__dirname, "config/vitest.base.ts"),
+      },
       formats: ["es"],
-      fileName: "index",
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "vite",
+        "vitest/config",
+        "@vitejs/plugin-react",
+        "@tailwindcss/vite",
+        /^node:/,
+      ],
       output: {
         assetFileNames: "styles/[name][extname]",
       },

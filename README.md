@@ -85,6 +85,47 @@ docs/
 `react` and `react-dom` are peer dependencies - the app provides them; React is never
 bundled into the library.
 
+## Consuming the shared tooling config
+
+`pureui` also ships the base tooling config the `pure*` apps share, so each app extends
+one source instead of copying `biome.json`/`tsconfig*`/`vite`/`vitest` per repo. The JSON
+presets use native `extends`; the Vite/Vitest presets are factory functions (raw `.ts`
+config under `node_modules` can't be type-stripped, so they ship compiled).
+
+```jsonc
+// app biome.json
+{ "extends": ["@pziel/pureui/biome"] }
+
+// app tsconfig.json
+{ "extends": "@pziel/pureui/tsconfig", "compilerOptions": { "paths": { "@/*": ["./src/*"] } } }
+
+// app tsconfig.node.json
+{ "extends": "@pziel/pureui/tsconfig-node" }
+```
+
+```ts
+// app vite.config.ts
+import { createTauriViteConfig } from "@pziel/pureui/vite";
+
+export default createTauriViteConfig({
+  appUrl: import.meta.url,
+  devPort: 1430,
+  hmrPort: 1421,
+});
+```
+
+```ts
+// app vitest.config.ts
+import { createVitestConfig } from "@pziel/pureui/vitest";
+
+export default createVitestConfig({ appUrl: import.meta.url });
+// overridable: setupFiles, include, inlineDeps
+```
+
+`vite`, `vitest`, `@vitejs/plugin-react`, `@tailwindcss/vite` are **optional** peer
+dependencies - only apps that import `./vite`/`./vitest` need them installed. `components.json`
+is not shareable (shadcn has no `extends`); keep it copied per app.
+
 ## Building components
 
 Read [docs/composed-components.md](docs/composed-components.md) and
