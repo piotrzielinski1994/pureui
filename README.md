@@ -27,9 +27,10 @@ npm install
 | `npm run dev` | Rebuild the library on change (`vite build --watch`). |
 | `npm run storybook` | Component workshop at http://localhost:6006. |
 | `npm run build-storybook` | Static Storybook build (`storybook-static/`). |
-| `npm run lint` | ESLint (flat config). |
+| `npm run lint` | Biome check (lint + format + import sort). |
+| `npm run lint:fix` | Biome check with safe autofixes applied. |
 | `npm run typecheck` | `tsc --noEmit`. |
-| `npm run format` | Prettier write. |
+| `npm run format` | Biome format write. |
 | `npm test` | Behavior tests (Vitest, run once). |
 | `npm run test:watch` | Vitest in watch mode. |
 

@@ -1,9 +1,9 @@
 /// <reference types="vitest/config" />
 import { copyFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
-import { defineConfig, type Plugin } from "vite";
-import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig, type Plugin } from "vite";
 import dts from "vite-plugin-dts";
 
 function copyThemeCss(): Plugin {
