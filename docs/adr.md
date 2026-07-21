@@ -54,3 +54,22 @@ registry (`publishConfig.access = "public"`, `private` removed). This supersedes
 instead of a `file:`/git link. GitHub Packages was rejected because it forces the scope
 to the repo owner (`@piotrzielinski1994`) and requires an auth `.npmrc` in every
 consumer.
+
+## ADR-005: Ship shared tooling config from `@pziel/pureui` (not a separate `@pziel/config`)
+
+**Context:** The 6 `pure*` repos are independent git repos (no monorepo). Their
+`biome.json`/`tsconfig*`/`vite.config.ts`/`vitest.config.ts` are hand-copied and have
+drifted. Two ways to centralize: a dedicated `@pziel/config` package, or add config export
+subpaths to the existing `@pziel/pureui` component library.
+
+**Decision:** Ship the base presets from `@pziel/pureui` via new export subpaths
+(`./biome`, `./tsconfig`, `./tsconfig-node`, `./vite`, `./vitest`). Apps `extends` the JSON
+presets and `import` the Vite/Vitest factory functions. `components.json` is left copied per
+app (shadcn has no `extends`). `puredevtools` (browser-extension: crx, node test env,
+coverage thresholds) does not share the 4-Tauri-app invariant and keeps its own config.
+
+**Why:** One package to publish and version instead of standing up a second repo + publish
+pipeline for a small personal app set. The accepted cost is mixing app-build tooling into a
+component library; the `vite`/`vitest` peer deps are marked optional so component-only
+consumers are unaffected. A separate `@pziel/config` stays the escape hatch if the config
+surface outgrows the library.
