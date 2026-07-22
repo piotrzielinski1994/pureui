@@ -53,6 +53,7 @@ export {
   useThemeOptional,
   useThemeToggle,
 } from "@/components/theme/theme-context";
+export { useIsMobile } from "@/lib/responsive/use-is-mobile";
 export type { ModifierEvent } from "@/lib/shortcuts/match-hotkey";
 export { matchesAny, matchesHotkey } from "@/lib/shortcuts/match-hotkey";
 export { safeNormalize } from "@/lib/shortcuts/normalize";
@@ -72,3 +73,9 @@ export type {
 export { resolveEffectiveMode } from "@/lib/theme/effective-mode";
 export { themeToggleMessage } from "@/lib/theme/toggle-message";
 export { cn } from "@/lib/utils";
+export { useWindowFullscreenSync } from "@/lib/window/use-window-fullscreen-sync";
+export type {
+  TauriWindow,
+  WindowController,
+} from "@/lib/window/window-controller";
+export { createNoopWindowController } from "@/lib/window/window-controller";
