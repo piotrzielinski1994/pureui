@@ -1,6 +1,6 @@
 {
   "name": "@pziel/pureui",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "description": "Shared React component library for the pure* apps (purerequest, purequery, ...). Radix-ui composed components + Tailwind v4 design tokens.",
   "license": "MIT",
