@@ -41,4 +41,18 @@ export {
   SelectTrigger,
   SelectValue,
 } from "@/components/select/select";
+export type { ThemeContextValue } from "@/components/theme/theme-context";
+export {
+  ThemeProvider,
+  useTheme,
+  useThemeOptional,
+  useThemeToggle,
+} from "@/components/theme/theme-context";
+export { cycleThemeMode } from "@/lib/theme/cycle-mode";
+export type {
+  EffectiveMode,
+  ThemeMode,
+} from "@/lib/theme/effective-mode";
+export { resolveEffectiveMode } from "@/lib/theme/effective-mode";
+export { themeToggleMessage } from "@/lib/theme/toggle-message";
 export { cn } from "@/lib/utils";
