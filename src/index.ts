@@ -11,6 +11,11 @@ export {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/command/command";
+export type {
+  CommandPaletteProps,
+  PaletteCommand,
+} from "@/components/command-palette/command-palette";
+export { CommandPalette } from "@/components/command-palette/command-palette";
 export {
   Dialog,
   DialogClose,
