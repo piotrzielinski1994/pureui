@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import {
   Command,
@@ -11,6 +12,11 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/command/command";
+
+const selectedName = () =>
+  document
+    .querySelector('[cmdk-item=""][aria-selected="true"]')
+    ?.textContent?.trim();
 
 describe("Command", () => {
   it("should render the command input as a textbox carrying its placeholder", () => {
@@ -54,6 +60,26 @@ describe("Command", () => {
     );
 
     expect(screen.getByRole("button", { name: /close/i })).toBeInTheDocument();
+  });
+
+  it("should wrap arrow navigation to the last item when loop is set and ArrowUp is pressed on the first", async () => {
+    const user = userEvent.setup();
+    render(
+      <CommandDialog open loop>
+        <CommandInput placeholder="Search" />
+        <CommandList>
+          <CommandItem>Alpha</CommandItem>
+          <CommandItem>Beta</CommandItem>
+          <CommandItem>Gamma</CommandItem>
+        </CommandList>
+      </CommandDialog>,
+    );
+
+    expect(selectedName()).toBe("Alpha");
+
+    await user.keyboard("{ArrowUp}");
+
+    expect(selectedName()).toBe("Gamma");
   });
 
   it("should resolve every AC-001 named export from the command barrel", () => {
