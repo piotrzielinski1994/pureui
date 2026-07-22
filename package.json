@@ -1,6 +1,6 @@
 {
   "name": "@pziel/pureui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "Shared React component library for the pure* apps (purerequest, purequery, ...). Radix-ui composed components + Tailwind v4 design tokens.",
   "license": "MIT",
@@ -14,11 +14,11 @@
   "files": ["dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "sideEffects": ["**/*.css"],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/src/index.d.ts",
       "import": "./dist/index.js"
     },
     "./styles/theme.css": "./dist/styles/theme.css",

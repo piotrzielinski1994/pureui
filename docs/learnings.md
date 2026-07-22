@@ -2,6 +2,7 @@
 
 Project-specific gotchas and conventions worth not re-deriving. Newest first.
 
+- **`package.json` `types`/`exports."."` must point at where `vite-plugin-dts` actually emits the barrel `.d.ts`.** dts preserves the source tree, so the `src/index.ts` entry emits to `dist/src/index.d.ts`, NOT `dist/index.d.ts` (where the bundled `index.js` lands). The `.` `types` field originally pointed at the non-existent `dist/index.d.ts`, so any consumer doing `import { cn } from "@pziel/pureui"` got `TS7016 (implicitly any)`. Config subpaths (`./vite`, `./vitest`) were unaffected because their dts lands at `dist/config/*.d.ts` matching their own `types`. Fixed by repointing `.` `types` to `./dist/src/index.d.ts` (v0.2.1). Runtime `dist/index.js` was always correct - types-only break, invisible until the first real barrel-type consumer (R1's `cn` migration).
 - **`typescript@7` (latest) breaks `typescript-eslint@8`** (peer `<6.1.0`). Pin TS to `~5.9`. See ADR-003.
 - **Vite `build.lib` does not emit imported CSS as a standalone file for a JS-only entry.** `theme.css` is copied into `dist/styles/` by a small `closeBundle` plugin (`copyThemeCss` in `vite.config.ts`) so consumers can `import "@pziel/pureui/styles/theme.css"`.
 - **`tsconfig` project `references` + `tsc --noEmit`** errors (TS6306/TS6310: referenced project must be `composite` and may not disable emit). Bootstrap keeps `tsconfig.node.json` standalone (editor-only) rather than a referenced project.
