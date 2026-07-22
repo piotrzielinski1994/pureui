@@ -48,6 +48,17 @@ export {
   useThemeOptional,
   useThemeToggle,
 } from "@/components/theme/theme-context";
+export type { ModifierEvent } from "@/lib/shortcuts/match-hotkey";
+export { matchesAny, matchesHotkey } from "@/lib/shortcuts/match-hotkey";
+export { safeNormalize } from "@/lib/shortcuts/normalize";
+export type {
+  KeyEventLike,
+  RecordHotkeyApi,
+} from "@/lib/shortcuts/record-hotkey";
+export { eventToHotkey, useRecordHotkey } from "@/lib/shortcuts/record-hotkey";
+export type { ShortcutActionMeta } from "@/lib/shortcuts/resolve";
+export { findConflict, resolveShortcuts } from "@/lib/shortcuts/resolve";
+export { toCodeMirrorKey } from "@/lib/shortcuts/to-codemirror-key";
 export { cycleThemeMode } from "@/lib/theme/cycle-mode";
 export type {
   EffectiveMode,
