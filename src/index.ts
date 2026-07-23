@@ -1,3 +1,4 @@
+export type { UseHotkeyOptions } from "@tanstack/react-hotkeys";
 export type { ButtonProps } from "@/components/button/button";
 export { Button, buttonVariants } from "@/components/button/button";
 export {
@@ -67,6 +68,7 @@ export { eventToHotkey, useRecordHotkey } from "@/lib/shortcuts/record-hotkey";
 export type { ShortcutActionMeta } from "@/lib/shortcuts/resolve";
 export { findConflict, resolveShortcuts } from "@/lib/shortcuts/resolve";
 export { toCodeMirrorKey } from "@/lib/shortcuts/to-codemirror-key";
+export { useActionHotkeys } from "@/lib/shortcuts/use-action-hotkeys";
 export type { FolderPicker } from "@/lib/tauri/folder-picker";
 export { createNoopFolderPicker } from "@/lib/tauri/folder-picker";
 export { applyThemeVars } from "@/lib/theme/apply-vars";
