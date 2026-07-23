@@ -72,6 +72,29 @@ export type {
 } from "@/lib/theme/effective-mode";
 export { resolveEffectiveMode } from "@/lib/theme/effective-mode";
 export { themeToggleMessage } from "@/lib/theme/toggle-message";
+export type { AppVersionDeps } from "@/lib/updater/app-version";
+export {
+  createAppVersionGetter,
+  FALLBACK_VERSION,
+  fallbackAppVersion,
+} from "@/lib/updater/app-version";
+export type {
+  UpdateToastHandle,
+  UpdateToastSink,
+} from "@/lib/updater/show-update-toast";
+export { showUpdateToast } from "@/lib/updater/show-update-toast";
+export { UpdateChecker } from "@/lib/updater/update-checker";
+export type {
+  UpdateController,
+  UpdateControllerDeps,
+  UpdateInfo,
+} from "@/lib/updater/update-controller";
+export {
+  createNoopUpdateController,
+  createUpdateController,
+} from "@/lib/updater/update-controller";
+export type { UpdaterContextValue } from "@/lib/updater/updater-context";
+export { UpdaterProvider, useUpdater } from "@/lib/updater/updater-context";
 export { cn } from "@/lib/utils";
 export { useWindowFullscreenSync } from "@/lib/window/use-window-fullscreen-sync";
 export type {
