@@ -69,12 +69,18 @@ export { findConflict, resolveShortcuts } from "@/lib/shortcuts/resolve";
 export { toCodeMirrorKey } from "@/lib/shortcuts/to-codemirror-key";
 export type { FolderPicker } from "@/lib/tauri/folder-picker";
 export { createNoopFolderPicker } from "@/lib/tauri/folder-picker";
+export { applyThemeVars } from "@/lib/theme/apply-vars";
 export { cycleThemeMode } from "@/lib/theme/cycle-mode";
 export type {
   EffectiveMode,
   ThemeMode,
 } from "@/lib/theme/effective-mode";
 export { resolveEffectiveMode } from "@/lib/theme/effective-mode";
+export type {
+  ThemeTokenSection,
+  TwoSectionColors,
+} from "@/lib/theme/overrides";
+export { applyDefaults, diffOverrides } from "@/lib/theme/overrides";
 export { themeToggleMessage } from "@/lib/theme/toggle-message";
 export type { AppVersionDeps } from "@/lib/updater/app-version";
 export {
