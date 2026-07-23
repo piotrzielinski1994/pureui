@@ -54,6 +54,8 @@ export {
   useThemeToggle,
 } from "@/components/theme/theme-context";
 export { useIsMobile } from "@/lib/responsive/use-is-mobile";
+export { createInMemorySettingsStore } from "@/lib/settings/in-memory-store";
+export type { SettingsStore } from "@/lib/settings/store";
 export type { ModifierEvent } from "@/lib/shortcuts/match-hotkey";
 export { matchesAny, matchesHotkey } from "@/lib/shortcuts/match-hotkey";
 export { safeNormalize } from "@/lib/shortcuts/normalize";

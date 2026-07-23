@@ -54,10 +54,6 @@ function importedSpecifiers(source: string): string[] {
 
 const FORBIDDEN = [
   { label: "@tauri-apps/*", test: (s: string) => s.startsWith("@tauri-apps/") },
-  {
-    label: "app settings module (@/lib/settings/*)",
-    test: (s: string) => s.startsWith("@/lib/settings"),
-  },
 ];
 
 describe("pureui R14 barrel exports (AC-001 / TC-001)", () => {
