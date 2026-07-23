@@ -65,6 +65,8 @@ export { eventToHotkey, useRecordHotkey } from "@/lib/shortcuts/record-hotkey";
 export type { ShortcutActionMeta } from "@/lib/shortcuts/resolve";
 export { findConflict, resolveShortcuts } from "@/lib/shortcuts/resolve";
 export { toCodeMirrorKey } from "@/lib/shortcuts/to-codemirror-key";
+export type { FolderPicker } from "@/lib/tauri/folder-picker";
+export { createNoopFolderPicker } from "@/lib/tauri/folder-picker";
 export { cycleThemeMode } from "@/lib/theme/cycle-mode";
 export type {
   EffectiveMode,
@@ -95,6 +97,9 @@ export {
 } from "@/lib/updater/update-controller";
 export type { UpdaterContextValue } from "@/lib/updater/updater-context";
 export { UpdaterProvider, useUpdater } from "@/lib/updater/updater-context";
+export type { Result } from "@/lib/util/result";
+export { toResult } from "@/lib/util/result";
+export { slugify, uniqueSlug } from "@/lib/util/slug";
 export { cn } from "@/lib/utils";
 export { useWindowFullscreenSync } from "@/lib/window/use-window-fullscreen-sync";
 export type {
@@ -102,3 +107,13 @@ export type {
   WindowController,
 } from "@/lib/window/window-controller";
 export { createNoopWindowController } from "@/lib/window/window-controller";
+export { dragOverlayLabel } from "@/lib/workspace/drag-overlay-label";
+export type {
+  PanelLayout,
+  PanelResizeTarget,
+} from "@/lib/workspace/panel-resize";
+export {
+  PANEL_RESIZE_STEP,
+  resolveFocusedPanel,
+  stepLayout,
+} from "@/lib/workspace/panel-resize";
