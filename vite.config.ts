@@ -85,6 +85,7 @@ export default defineConfig({
         /^@radix-ui\//,
         "radix-ui",
         "@tanstack/hotkeys",
+        "@tanstack/react-hotkeys",
         "cmdk",
         "react-resizable-panels",
         "class-variance-authority",
