@@ -47,6 +47,16 @@ export {
   SelectTrigger,
   SelectValue,
 } from "@/components/select/select";
+export type {
+  ShortcutRebindStore,
+  ShortcutRowProps,
+} from "@/components/shortcuts/shortcut-row";
+export { ShortcutRow } from "@/components/shortcuts/shortcut-row";
+export type {
+  ShortcutGroup,
+  ShortcutsSectionProps,
+} from "@/components/shortcuts/shortcuts-section";
+export { ShortcutsSection } from "@/components/shortcuts/shortcuts-section";
 export type { ThemeContextValue } from "@/components/theme/theme-context";
 export {
   ThemeProvider,
